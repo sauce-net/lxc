@@ -1,5 +1,5 @@
 #!/bin/bash
 
-apt install -y \
+apk add --update --no-cache \
   golang \
   make
