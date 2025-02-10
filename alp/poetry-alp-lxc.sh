@@ -1,17 +1,16 @@
 #!/bin/bash
 
-apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
-python3 -m ensurepip
-pip3 install --no-cache --upgrade pip setuptools
 apk add --no-cache \
   curl \
   gcc \
   libressl-dev \
   musl-dev \
-  libffi-dev
+  libffi-dev \
+  pipx
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile=minimal
 source $HOME/.cargo/env
-pip install --no-cache-dir poetry
+pipx ensurepath
+pipx install poetry && source ~/.profile
 apk del \
   curl \
   gcc \
